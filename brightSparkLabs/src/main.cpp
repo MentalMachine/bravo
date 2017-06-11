@@ -1,13 +1,12 @@
 #include <iostream>
 #include <fstream>
+#include <chrono>
 #include "BSL.h"
 
 int main()
 {
 	BSL BSL_obj{};
+	BSL_obj.brightSparkLabs();
 	
-	std::ofstream output("output.txt");
-	BSL_obj.brightSparkLabs(output);
-	output.close();
 	return 0;
 }
