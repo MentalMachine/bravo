@@ -1,11 +1,9 @@
-#include <iostream>
-#include <cstdint>
-#include <memory>
 #include "fib.h"
 
 // NOTE: all input checking for fibonacci functions is done in fibonacci::getUserInput()
 
-uint64_t fibonacci::getUserInput(void) // change the return type to tuple<bool, uint64_t> so to return failure/return state?
+// Get and checks user input
+uint64_t fibonacci::getUserInput(void) 
 {
 	bool correct_user_input_flag = false;
 	
@@ -18,13 +16,13 @@ uint64_t fibonacci::getUserInput(void) // change the return type to tuple<bool, 
 			if(!getline(std::cin, input) )
 			{
 				std::cout << "I/O error - exiting" << std::endl;
-				return 0;
+				exit(EXIT_FAILURE);
 			}
 		}
-		catch(std::ios_base::failure fail)
+		catch(std::ios_base::failure fail) // iff exception is thrown
 		{
 			std::cerr << "I/O error exception - exiting" << std::endl;
-			exit(1);
+			exit(EXIT_FAILURE);
 		}
 
 		bool invalid_char_flag = false;
@@ -54,7 +52,8 @@ uint64_t fibonacci::getUserInput(void) // change the return type to tuple<bool, 
 			continue;
 		}
 	}
-	return 0;
+	std::cout << "control escaped while loop - exiting" << std::endl; // worse case condition
+	exit(EXIT_FAILURE);
 }
 
 uint64_t fibonacci::classicFib(uint64_t n) // use recursion to compute fibonacci
@@ -69,7 +68,7 @@ uint64_t fibonacci::classicFib(uint64_t n) // use recursion to compute fibonacci
 uint64_t fibonacci::tailRecFib(uint64_t n, uint64_t a, uint64_t b) // tail recursion fibonacci
 {
 	// NOTE: a & b default args of 1 and 0 respectively
-    if(n < 2)
+    if(n < 2) // min n can be is 1, so n < 2 is sufficient
 	{
         return a;
 	}
@@ -79,7 +78,7 @@ uint64_t fibonacci::tailRecFib(uint64_t n, uint64_t a, uint64_t b) // tail recur
 uint64_t fibonacci::itFib(uint64_t n) // iterative fibonacci
 {
     uint64_t a = 0; uint64_t b = 1; // a and b are the first two fibonaci numbers
-    while(n > 0) // break condition, count down from n to -1
+    while(n > 0) // break condition, count down from n to 0
     {
         uint64_t c = a; // store as a becomes the sum of a and b, but b needs to be set to a's previous value
         a = a + b;

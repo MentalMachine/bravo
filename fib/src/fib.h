@@ -1,4 +1,8 @@
 #pragma once
+#include <iostream>
+#include <cstdint>
+#include <memory>
+#include <map>
 
 class fibonacci
 {
