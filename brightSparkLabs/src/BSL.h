@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <tuple>
+#include <cstdint>
 
 class BSL
 {
@@ -21,5 +22,6 @@ class BSL
 	private:
 		std::vector<std::string> strings; // allows flexibility in printing strings but not on what number
 		std::vector<std::tuple<uint64_t, std::string> > mapper; // stores numbers and strings to print
+		uint64_t max_range = 100; 
 	protected:
 };

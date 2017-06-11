@@ -17,11 +17,9 @@ BSL::BSL(void) // constructor - setup string vector
 
 // can use a map<int, string> or vector<tuple<int, string> > to map specific numbers to string output, have it be read in to save time 
 // iterating thru for every i has longer exec time than if branching
-// 
-// 
 void BSL::brightSparkLabs(void) 
 {
-	for(uint8_t i = 1; i < 100; ++i)
+	for(uint8_t i = 1; i < max_range; ++i)
 	{
 		std::cout << std::to_string(i);
 		if(i % 5 == 0 && i % 3 == 0)
@@ -43,7 +41,7 @@ void BSL::brightSparkLabs(void)
 // allows user to write function to a file/cout
 void BSL::brightSparkLabs(std::ostream& out_method) 
 {
-	for(uint8_t i = 1; i < 100; ++i)
+	for(uint8_t i = 1; i < max_range; ++i)
 	{
 		out_method << std::to_string(i);
 		if(i % 5 == 0 && i % 3 == 0)
@@ -65,7 +63,7 @@ void BSL::brightSparkLabs(std::ostream& out_method)
 // allows flexibility in printing strings on specific numbers, but exec time is longer
 void BSL::mappedBrightSparkLabs(void)
 {
-	for(uint8_t i = 1; i < 100; ++i)
+	for(uint8_t i = 1; i < max_range; ++i)
 	{
 		std::cout << std::to_string(i);
 		for(auto it = mapper.begin(); it != mapper.end(); ++it)
