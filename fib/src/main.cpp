@@ -2,7 +2,6 @@
 #include <cstdint>
 #include <memory>
 #include <chrono>
-#include <typeinfo>
 #include "fib.h"
 
 using namespace std;
@@ -19,7 +18,8 @@ int main()
 		// timings averaged via chrono testing in test files
 		// std::cout << fib_object.classicFib(n) << std::endl; // f(40) = 1.67852s
 		// std::cout << fib_object.tailRecFib(n) << std::endl; // f(84) = 1.8086e-05s
-		std::cout << fib_object.itFib(n) << std::endl; // f(84) = 3.535e-06s
+		// std::cout << fib_object.itFib(n) << std::endl; // f(84) = 3.535e-06s
+		std::cout << fib_object.matrixFib(n) << std::endl; // f(84) = 
 	}
 	catch(std::bad_alloc ex)
 	{
