@@ -23,19 +23,25 @@ and the file containing the actual tests (tests_fib.cpp)
 The testing was broken down into two sections: algorithm correctness and algorithm speed.
 
 The correctness part consists of verifying the algorithms are correct with specific values expected for
-specific given input
+specific given input:
+
+f(0) = 0
+f(1) = 1
+f(2) = 1
+f(5) = 5
+f(13) = 233
 
 The speed part is calculating a large Fibonacci number and using the chrono library to time how long 
 each algorithm took to compute a large fibonacci number. 
 
-///////////////////////
-// DEV SUMMARY //
-///////////////////////
+///////////////////////////
+// DEVELOPMENT SUMMARY  //
+/////////////////////////
 
 The algorithm development consisted of developing the classic recursion Fibonacci algorithm, and 
 then moving onto the tail recursion-based algorithm and the iterative based algorithms.
 
-Via testing, the iterative approach was by far the fastest, however I was curious if there was any other faster methods.
+Via testing, the iterative approach was by far the fastest and most reliable as tail recursion cam often be compiler dependent, however I was curious if there was any other faster methods.
 Doing some research online, I found another method called Matrix Exponentiation, which is based translating the fibonacci
 series to matrix form:
 
@@ -52,3 +58,8 @@ the Matrix Exponentiation method becomes superior.
 
 In addition, a method to ensure the user enters the correct input (an integer from 0->inf) was implemented. This is a while loop that repeatedly takes
 in string input until a suitable input string has been entered. The string is then returned as a uint64_t.
+
+All numerical variables are of type uint64_t given [0, (2^64 - 1)] range. This has the draw back of 
+integer overflow errors as n->inf. If the end user did require f(n) such that 64 bit unsigned integers could not
+hold the result, alternative variables types could be considered such as floating point (however this also brings in the issue
+of accuracy) or storing the number as an array of 8 bit unsigned integers, each representing the ith fibonacci digit.

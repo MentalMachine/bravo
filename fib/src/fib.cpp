@@ -131,6 +131,8 @@ uint64_t fibonacci::itFib(uint64_t n) // iterative fibonacci
     return a; // holds the desired fibonacci number
 }
 
+
+// matrix based fibonacci - see 'fibMatrixRaiseByPower' for more detail
 uint64_t fibonacci::matrixFib(uint64_t n) 
 {
     uint64_t fib_matrix[2][2] = {{1,1},{1,0}}; // base fibonacci matrix

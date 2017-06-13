@@ -16,6 +16,7 @@ TEST_CASE( "classicFib", "[fibonacci]" )  // simple test to ensure correctness
 {
 	REQUIRE( fib_obj.classicFib(0) == 0 );
     REQUIRE( fib_obj.classicFib(1) == 1 );
+	REQUIRE( fib_obj.classicFib(2) == 1 );
     REQUIRE( fib_obj.classicFib(5) == 5 );
     REQUIRE( fib_obj.classicFib(13) == 233 );
 }
@@ -34,6 +35,7 @@ TEST_CASE( "tailRecFib", "[fibonacci]" )  // simple test to ensure correctness
 {
     REQUIRE( fib_obj.tailRecFib(0) == 0 );
 	REQUIRE( fib_obj.tailRecFib(1) == 1 );
+	REQUIRE( fib_obj.tailRecFib(2) == 1 );
     REQUIRE( fib_obj.tailRecFib(5) == 5 );
     REQUIRE( fib_obj.tailRecFib(13) == 233 );
 }
@@ -52,6 +54,7 @@ TEST_CASE( "itFib", "[fibonacci]" )  // simple test to ensure correctness
 {
 	REQUIRE( fib_obj.itFib(0) == 0 );
     REQUIRE( fib_obj.itFib(1) == 1 );
+	REQUIRE( fib_obj.itFib(1) == 2 );
     REQUIRE( fib_obj.itFib(5) == 5 );
     REQUIRE( fib_obj.itFib(13) == 233 );
 }
@@ -70,6 +73,7 @@ TEST_CASE( "matrixFib", "[fibonacci]" )  // simple test to ensure correctness
 {
 	REQUIRE( fib_obj.matrixFib(0) == 0 );
     REQUIRE( fib_obj.matrixFib(1) == 1 );
+	REQUIRE( fib_obj.matrixFib(1) == 2 );
     REQUIRE( fib_obj.matrixFib(5) == 5 );
     REQUIRE( fib_obj.matrixFib(13) == 233 );
 }
