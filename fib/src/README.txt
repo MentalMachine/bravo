@@ -60,6 +60,15 @@ In addition, a method to ensure the user enters the correct input (an integer fr
 in string input until a suitable input string has been entered. The string is then returned as a uint64_t.
 
 All numerical variables are of type uint64_t given [0, (2^64 - 1)] range. This has the draw back of 
-integer overflow errors as n->inf. If the end user did require f(n) such that 64 bit unsigned integers could not
+integer overflow errors when n->inf. If the end user did require f(n) such that 64 bit unsigned integers could not
 hold the result, alternative variables types could be considered such as floating point (however this also brings in the issue
-of accuracy) or storing the number as an array of 8 bit unsigned integers, each representing the ith fibonacci digit.
+of accuracy) or storing the number as an array of 8 bit unsigned integers, such as a string, each representing the ith fibonacci digit.
+
+The latter idea was impemented as largeNumberFib, which takes in the nth fibonacci number an user wishes to calculate
+and a number represting the number of digits they want the answer in. This code executes roughly slightly slower that the 
+tail recursion code, however it doesn't have the drawback of overflow, as a string of 1000 characters is not a 
+huge amount of data for a program to hold.
+
+The current largeNumberFib does not take into account the possiblity of the user entering insufficient amount of characters to
+hold the desired fibonacci number, a means of outputting a warning string that the whole number has been cut off should be implemented
+if this posses a sufficent problem.

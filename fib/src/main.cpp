@@ -16,10 +16,12 @@ int main()
 		uint64_t n = fib_object.getUserInput(); //ensures user only enters an integer
 		
 		// timings averaged via chrono testing in test files
-		// std::cout << fib_object.classicFib(n) << std::endl; // f(40) = 1.67852s
-		// std::cout << fib_object.tailRecFib(n) << std::endl; // f(84) = 1.8086e-05s
-		// std::cout << fib_object.itFib(n) << std::endl; // f(84) = 3.535e-06s
-		std::cout << fib_object.matrixFib(n) << std::endl; // f(84) = 
+		// std::cout << fib_object.classicFib(n) << std::endl; 	// f(40) = 1.31s
+		// std::cout << fib_object.tailRecFib(n) << std::endl; 	// f(90) = 4.07e-6s
+		// std::cout << fib_object.itFib(n) << std::endl; 		// f(90) = 3.73e-6s
+		// std::cout << fib_object.matrixFib(n) << std::endl; 	// f(90) = 3.65e-6s
+		uint64_t number_of_digits = fib_object.getUserInput(); // ensures user only enters an integer
+		std::cout << fib_object.largeNumberFib(n, number_of_digits) << std::endl; // 4.14e-5s
 	}
 	catch(std::bad_alloc ex)
 	{

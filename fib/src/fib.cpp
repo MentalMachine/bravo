@@ -143,3 +143,62 @@ uint64_t fibonacci::matrixFib(uint64_t n)
     fibMatrixRaiseByPower(fib_matrix, n-1); // all of the work is done here via tail recursion calls.
     return fib_matrix[0][0]; // return F(n+1)
 }
+
+// set all elements to a specific value
+void set(std::string& arr, uint8_t value)
+{
+    for(auto it = arr.begin(); it != arr.end(); ++it)
+    {
+        (*it) = value;
+    }
+}
+
+
+// Algorithm is an iterative fibonacci, but
+// instead of using regular integer variables to
+// store values, use an array of chars (8-bit unsigned
+// integers) to instead hold each digit of the result
+// allowing for extremely large fibonacci results
+
+// wrapped in std::string for easier printing and handling
+std::string fibonacci::largeNumberFib(uint64_t n, uint64_t number_of_digits)
+{
+
+    std::string a;
+    a.resize(number_of_digits); 
+    set(a, 48+0);
+	
+	if(n==0)
+	{
+		return a;
+	}
+	
+    a[0] = 48+1; // a = [0... 01] == 1
+    std::string b;
+    b.resize(number_of_digits);
+    set(b, 48+0); // b = [0... 0] == 0
+	
+	while(n > 1)
+	{
+		uint8_t carry_over = 0; 
+		for(uint64_t i = 0; i <number_of_digits; ++i)
+		{
+			uint8_t temp = a[i]; // store current digit of a
+			a[i]  = ( a[i] + b[i] + carry_over) - 48; // add current digits plus carry over from last iteration, subtract 48 to get back to 0-9 ascii range
+			if(a[i] > 57) // 57 == '9' ie sum of a[i], b[i] is 10 or more
+			{
+				carry_over = 1;
+				a[i]-=10; // subtract 10 to go from 13 to 3 etc
+			}
+			else
+			{
+				carry_over = 0; // prevent flow on carry on
+			}
+			b[i] = temp;
+		}
+		--n;
+	}
+	
+    std::reverse(a.begin(), a.end()); // ensure the number is readible
+    return a;
+}
